@@ -1,47 +1,49 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-
-const experiences = [
-  {
-    id: 1,
-    period: "Aug 2023 - Present",
-    title: "Apprentice IT Operations Integrator Engineer",
-    company: "Swiss Life France, Levallois-Perret",
-    description: "Working as a Full Stack Engineer to develop solutions for infrastructure and operations teams.",
-    skills: ["Project Management", "Network Security", "Full Stack Development"],
-  },
-  {
-    id: 2,
-    period: "Sep 2022 - Aug 2023",
-    title: "Apprentice Technical Architect - Full Stack Developer",
-    company: "Swiss Life France",
-    description: "Implemented an automation and monitoring tool. Generated delivery reports for environment platforms. Monitored firewall objects (machines, VLAN groups, policies and rules).",
-    skills: ["SQL", "Database Administration", "Automation"],
-    isList: true
-  },
-  {
-    id: 3,
-    period: "Apr 2021 - Jun 2021",
-    title: "Web Developer Intern",
-    company: "Université Sorbonne Paris Nord, Villetaneuse",
-    description: "Created web extensions for educational tools. Developed Turtleuitv: An application allowing control of a turtle with Python code and accompanying graphical interface. Implemented Pythontutor integration for step-by-step code visualization. Set up a containerized (Docker) version of JupyterHub.",
-    skills: ["HTML5", "Python", "JavaScript", "Paper.js"],
-    isList: true
-  },
-  {
-    id: 4,
-    period: "Jul 2019 - Sep 2020",
-    title: "Mobile Applications Developer",
-    company: "Independent, Palaiseau",
-    description: "Developed a board game similar to checkers, available on Google Play Store. Initially developed for Android using Java and Eclipse. Currently redeveloping natively with React and Node.js for both iOS and Android.",
-    skills: ["Java", "React.js", "Node.js", "Android Studio"],
-    isList: true
-  }
-];
+import { useLanguage } from "../i18n/LanguageContext";
 
 const ExperienceSection = () => {
+  const { translations } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+
+  const experiences = [
+    {
+      id: 1,
+      period: `Aug 2023 - ${translations.experience.present}`,
+      title: translations.experience.roles.apprenticeIT,
+      company: "Swiss Life France, Levallois-Perret",
+      description: translations.experience.descriptions.apprenticeIT,
+      skills: [translations.experience.skills.projectManagement, translations.experience.skills.networkSecurity, translations.experience.skills.fullStack],
+    },
+    {
+      id: 2,
+      period: "Sep 2022 - Aug 2023",
+      title: translations.experience.roles.apprenticeTech,
+      company: "Swiss Life France",
+      description: translations.experience.descriptions.apprenticeTech,
+      skills: [translations.experience.skills.sql, translations.experience.skills.dbAdmin, translations.experience.skills.automation],
+      isList: true
+    },
+    {
+      id: 3,
+      period: "Apr 2021 - Jun 2021",
+      title: translations.experience.roles.webDev,
+      company: "Université Sorbonne Paris Nord, Villetaneuse",
+      description: translations.experience.descriptions.webDev,
+      skills: [translations.experience.skills.html, translations.experience.skills.python, translations.experience.skills.javascript, translations.experience.skills.paperjs],
+      isList: true
+    },
+    {
+      id: 4,
+      period: "Jul 2019 - Sep 2020",
+      title: translations.experience.roles.mobileDev,
+      company: "Independent, Palaiseau",
+      description: translations.experience.descriptions.mobileDev,
+      skills: [translations.experience.skills.java, translations.experience.skills.reactjs, translations.experience.skills.nodejs, translations.experience.skills.androidStudio],
+      isList: true
+    }
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -74,10 +76,10 @@ const ExperienceSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-dark-900 dark:text-white mb-4">Work Experience</h2>
+          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-dark-900 dark:text-white mb-4">{translations.experience.title}</h2>
           <div className="w-20 h-1.5 bg-primary-500 rounded-full mx-auto"></div>
           <p className="mt-4 text-dark-700 dark:text-dark-100 max-w-2xl mx-auto">
-            My professional journey through various roles and responsibilities.
+            {translations.experience.subtitle}
           </p>
         </motion.div>
         

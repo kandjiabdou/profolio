@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const programmingLanguages = [
   { name: "Java", percentage: 90, icon: "devicon-java-plain colored" },
@@ -50,6 +51,7 @@ const softSkills = [
 ];
 
 const SkillsSection = () => {
+  const { translations } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
@@ -95,10 +97,10 @@ const SkillsSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-dark-900 dark:text-white mb-4">My Skills</h2>
+          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-dark-900 dark:text-white mb-4">{translations.skills.title}</h2>
           <div className="w-20 h-1.5 bg-primary-500 rounded-full mx-auto"></div>
           <p className="mt-4 text-dark-700 dark:text-dark-100 max-w-2xl mx-auto">
-            A comprehensive toolkit of technologies and methodologies I've mastered throughout my journey.
+            {translations.skills.subtitle}
           </p>
         </motion.div>
         
@@ -118,7 +120,7 @@ const SkillsSection = () => {
               <i className="fa-solid fa-code text-3xl"></i>
             </div>
             <h3 className="text-xl font-heading font-bold text-dark-900 dark:text-white mb-4">
-              Programming Languages
+              {translations.skills.sections.programming}
             </h3>
             <div className="space-y-4">
               {programmingLanguages.map((lang) => (
@@ -151,7 +153,7 @@ const SkillsSection = () => {
               <i className="fa-solid fa-globe text-3xl"></i>
             </div>
             <h3 className="text-xl font-heading font-bold text-dark-900 dark:text-white mb-4">
-              Web Technologies
+              {translations.skills.sections.web}
             </h3>
             <div className="grid grid-cols-2 gap-4">
               {webTechnologies.map((tech) => (
@@ -172,7 +174,7 @@ const SkillsSection = () => {
               <i className="fa-solid fa-gears text-3xl"></i>
             </div>
             <h3 className="text-xl font-heading font-bold text-dark-900 dark:text-white mb-4">
-              DevOps & Tools
+              {translations.skills.sections.devops}
             </h3>
             <div className="grid grid-cols-2 gap-4">
               {devOpsTools.map((tool) => (
@@ -193,7 +195,7 @@ const SkillsSection = () => {
               <i className="fa-solid fa-database text-3xl"></i>
             </div>
             <h3 className="text-xl font-heading font-bold text-dark-900 dark:text-white mb-4">
-              Databases & Soft Skills
+              {translations.skills.sections.databases}
             </h3>
             {/* Databases */}
             <div className="mb-6">
@@ -210,7 +212,7 @@ const SkillsSection = () => {
             
             {/* Soft Skills */}
             <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-dark-700 dark:text-dark-200 mb-3">Soft Skills</h4>
+              <h4 className="text-sm font-semibold uppercase tracking-wider text-dark-700 dark:text-dark-200 mb-3">{translations.skills.sections.softSkills}</h4>
               <div className="grid grid-cols-1 gap-2">
                 {softSkills.map((skill) => (
                   <div className="skill-chip flex items-center gap-2" key={skill.name}>

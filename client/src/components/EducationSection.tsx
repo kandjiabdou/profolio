@@ -1,45 +1,47 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useLanguage } from "../i18n/LanguageContext";
 
-const education = [
+const getEducation = (translations: any) => [
   {
     id: 1,
-    period: "2023 - 2026",
-    degree: "Engineering Degree, Computer Science",
-    institution: "EFREI Paris, Villejuif",
-    description: "Currently pursuing an engineering degree in Computer Science, specializing in software development and system architecture."
+    period: translations.education.items.engineering.period,
+    degree: translations.education.items.engineering.degree,
+    institution: translations.education.items.engineering.institution,
+    description: translations.education.items.engineering.description
   },
   {
     id: 2,
-    period: "2022 - 2023",
-    degree: "Bachelor in Application Development",
-    institution: "EPSI Paris, Puteaux",
-    description: "Specialized in application development with a focus on web and mobile technologies."
+    period: translations.education.items.bachelor.period,
+    degree: translations.education.items.bachelor.degree,
+    institution: translations.education.items.bachelor.institution,
+    description: translations.education.items.bachelor.description
   },
   {
     id: 3,
-    period: "2021 - 2022",
-    degree: "Engineering School - First Year",
-    institution: "Sup Galilée, Université Sorbonne Paris Nord",
-    description: "Completed the first year of engineering studies with a focus on computer science fundamentals."
+    period: translations.education.items.firstYear.period,
+    degree: translations.education.items.firstYear.degree,
+    institution: translations.education.items.firstYear.institution,
+    description: translations.education.items.firstYear.description
   },
   {
     id: 4,
-    period: "2019 - 2021",
-    degree: "DUT (Associate's Degree), Computer Science",
-    institution: "Université Sorbonne Paris Nord - IUT de Villetaneuse",
-    description: "Two-year technical degree in Computer Science with a focus on programming, algorithms, and system design."
+    period: translations.education.items.dut.period,
+    degree: translations.education.items.dut.degree,
+    institution: translations.education.items.dut.institution,
+    description: translations.education.items.dut.description
   },
   {
     id: 5,
-    period: "2018 - 2019",
-    degree: "Baccalauréat Scientifique (High School Diploma)",
-    institution: "Lycée Malick Sy",
-    description: "Scientific Baccalaureate with high honors (mention BIEN)."
+    period: translations.education.items.bac.period,
+    degree: translations.education.items.bac.degree,
+    institution: translations.education.items.bac.institution,
+    description: translations.education.items.bac.description
   }
 ];
 
 const EducationSection = () => {
+  const { translations } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
@@ -74,10 +76,10 @@ const EducationSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-dark-900 dark:text-white mb-4">Education</h2>
+          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-dark-900 dark:text-white mb-4">{translations.education.title}</h2>
           <div className="w-20 h-1.5 bg-primary-500 rounded-full mx-auto"></div>
           <p className="mt-4 text-dark-700 dark:text-dark-100 max-w-2xl mx-auto">
-            My academic journey and educational qualifications.
+            {translations.education.subtitle}
           </p>
         </motion.div>
         
@@ -94,10 +96,10 @@ const EducationSection = () => {
               animate={isInView ? "visible" : "hidden"}
               variants={containerVariants}
             >
-              {education.map((edu, index) => (
+              {getEducation(translations).map((edu, index) => (
                 <motion.div 
                   key={edu.id}
-                  className={`relative mb-12 md:mb-16 ${index === education.length - 1 ? '' : ''}`}
+                  className="relative mb-12 md:mb-16"
                   variants={itemVariants}
                 >
                   <div className="flex flex-col md:flex-row items-start">

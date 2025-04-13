@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
-import { Logo } from "./ui/logo";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const Footer = () => {
+  const { translations } = useLanguage();
   const currentYear = new Date().getFullYear();
   
   return (
@@ -11,31 +11,38 @@ const Footer = () => {
           {/* Logo & Tagline */}
           <div className="mb-6 md:mb-0 text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-2 font-heading font-bold text-xl text-white mb-2">
-              <div className="w-8 h-8 rounded-md bg-primary-500 text-white flex items-center justify-center">
+              <a href="https://twitter.com/kandjiabdou" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/30 flex items-center justify-center transition-colors duration-300">
                 AK
-              </div>
+              </a>
               <span>Abdou Kandji</span>
             </div>
             <p className="text-gray-400 max-w-md">
-              Full Stack Developer passionate about creating elegant solutions to complex problems.
+              {translations.footer.tagline}
             </p>
           </div>
           
           {/* Quick Links */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-6 md:mb-0">
             <div>
-              <h4 className="font-heading font-bold text-white mb-4">Navigation</h4>
+              <h4 className="font-heading font-bold text-white mb-4">{translations.footer.legal.title}</h4>
               <ul className="space-y-2">
-                <li><a href="#hero" className="text-gray-400 hover:text-primary-500 transition-colors duration-300">Home</a></li>
-                <li><a href="#about" className="text-gray-400 hover:text-primary-500 transition-colors duration-300">About</a></li>
-                <li><a href="#skills" className="text-gray-400 hover:text-primary-500 transition-colors duration-300">Skills</a></li>
-                <li><a href="#projects" className="text-gray-400 hover:text-primary-500 transition-colors duration-300">Projects</a></li>
+                <li><a href="/privacy" className="text-gray-400 hover:text-primary-500 transition-colors duration-300">{translations.footer.legal.privacy}</a></li>
+                <li><a href="/terms" className="text-gray-400 hover:text-primary-500 transition-colors duration-300">{translations.footer.legal.terms}</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-heading font-bold text-white mb-4">Contact</h4>
+              <h4 className="font-heading font-bold text-white mb-4">{translations.footer.navigation.title}</h4>
               <ul className="space-y-2">
-                <li><a href="mailto:abdou.k.kandji@gmail.com" className="text-gray-400 hover:text-primary-500 transition-colors duration-300">Email</a></li>
+                <li><a href="/" className="text-gray-400 hover:text-primary-500 transition-colors duration-300">{translations.footer.navigation.home}</a></li>
+                <li><a href="#about" className="text-gray-400 hover:text-primary-500 transition-colors duration-300">{translations.footer.navigation.about}</a></li>
+                <li><a href="#skills" className="text-gray-400 hover:text-primary-500 transition-colors duration-300">{translations.footer.navigation.skills}</a></li>
+                <li><a href="#projects" className="text-gray-400 hover:text-primary-500 transition-colors duration-300">{translations.footer.navigation.projects}</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-heading font-bold text-white mb-4">{translations.footer.contact.title}</h4>
+              <ul className="space-y-2">
+                <li><a href="mailto:abdou.k.kandji@gmail.com" className="text-gray-400 hover:text-primary-500 transition-colors duration-300">{translations.footer.contact.email}</a></li>
                 <li><a href="https://linkedin.com/in/kandji" target="_blank" className="text-gray-400 hover:text-primary-500 transition-colors duration-300">LinkedIn</a></li>
                 <li><a href="https://github.com/kandjiabdou" target="_blank" className="text-gray-400 hover:text-primary-500 transition-colors duration-300">GitHub</a></li>
               </ul>
@@ -45,7 +52,7 @@ const Footer = () => {
         
         <div className="border-t border-dark-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm mb-4 md:mb-0">
-            &copy; {currentYear} Abdou Kandji. All rights reserved.
+            &copy; {currentYear} {translations.footer.copyright}
           </p>
           
           <div className="flex items-center space-x-4">

@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useTheme } from "../context/ThemeContext";
+import { useLanguage } from "../i18n/LanguageContext";
+import { LanguageSwitcher } from "./ui/LanguageSwitcher";
+
 import { Logo } from "./ui/logo";
 
-const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#education", label: "Education" },
-  { href: "#contact", label: "Contact" }
-];
-
 const Navbar = () => {
+  const { translations } = useLanguage();
+
+  const navLinks = [
+    { href: "#about", label: translations.nav.about },
+    { href: "#skills", label: translations.nav.skills },
+    { href: "#experience", label: "Experience" },
+    { href: "#projects", label: translations.nav.projects },
+    { href: "#education", label: "Education" },
+    { href: "#contact", label: translations.nav.contact }
+  ];
   // Get theme from localStorage or system preference rather than context
   const [theme, setTheme] = useState(() => {
     // Default to light theme if we can't determine the preference
@@ -97,6 +100,7 @@ const Navbar = () => {
             >
               <i className={`fa-solid ${theme === 'dark' ? 'fa-moon' : 'fa-sun'}`}></i>
             </button>
+            <LanguageSwitcher />
             
             {/* Mobile Menu Button */}
             <button 

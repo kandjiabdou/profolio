@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const blogPosts = [
   {
@@ -31,6 +32,7 @@ const blogPosts = [
 const BlogSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  const { translations } = useLanguage();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -63,10 +65,10 @@ const BlogSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-dark-900 dark:text-white mb-4">Latest Articles</h2>
+          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-dark-900 dark:text-white mb-4">{translations.blog.title}</h2>
           <div className="w-20 h-1.5 bg-primary-500 rounded-full mx-auto"></div>
           <p className="mt-4 text-dark-700 dark:text-dark-100 max-w-2xl mx-auto">
-            Sharing my thoughts and experiences on technology, development, and more.
+            {translations.blog.subtitle}
           </p>
         </motion.div>
         
@@ -109,7 +111,7 @@ const BlogSection = () => {
                 </p>
                 
                 <a href={post.link} className="inline-flex items-center text-primary-600 dark:text-primary-500 hover:text-primary-700 dark:hover:text-primary-400 font-medium transition-colors duration-300">
-                  Read More
+                  {translations.blog.readMore}
                   <i className="fa-solid fa-arrow-right ml-1 text-sm"></i>
                 </a>
               </div>

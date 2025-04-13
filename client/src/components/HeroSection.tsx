@@ -1,25 +1,11 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-
-const typewriterVariants = {
-  hidden: { width: 0 },
-  visible: { 
-    width: "100%",
-    transition: { 
-      duration: 2,
-      ease: "easeInOut"
-    }
-  }
-};
+import { useLanguage } from "../i18n/LanguageContext";
 
 const HeroSection = () => {
+  const { translations } = useLanguage();
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const roles = [
-    "Full Stack Developer",
-    "Web Application Engineer",
-    "Mobile App Developer",
-    "DevOps Enthusiast"
-  ];
+  const roles = translations.hero.roles;
   
   useEffect(() => {
     const interval = setInterval(() => {
@@ -63,7 +49,7 @@ const HeroSection = () => {
               transition={{ duration: 0.6 }}
             >
               <span className="inline-block relative">
-                Hello, I'm
+                {translations.hero.greeting}
                 <span className="absolute bottom-0 left-0 w-full h-1 bg-primary-500/50 dark:bg-primary-500/30"></span>
               </span>
             </motion.p>
@@ -105,9 +91,7 @@ const HeroSection = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Passionate about creating elegant solutions to complex problems. 
-              With experience in both front-end and back-end technologies, I build 
-              robust applications that deliver exceptional user experiences.
+              {translations.hero.description}
             </motion.p>
             
             {/* CTA Buttons */}
@@ -119,11 +103,11 @@ const HeroSection = () => {
             >
               <a href="#contact" className="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2">
                 <i className="fa-solid fa-envelope"></i>
-                Get in Touch
+                {translations.hero.cta}
               </a>
               <a href="#projects" className="px-6 py-3 bg-white dark:bg-dark-800 hover:bg-gray-100 dark:hover:bg-dark-700 text-dark-800 dark:text-white border border-gray-300 dark:border-dark-700 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2">
                 <i className="fa-solid fa-code"></i>
-                View Projects
+                {translations.hero.viewProjects}
               </a>
             </motion.div>
             
@@ -165,7 +149,7 @@ const HeroSection = () => {
         }}
       >
         <a href="#about" className="flex flex-col items-center text-dark-700 dark:text-dark-100 hover:text-primary-600 dark:hover:text-primary-500 transition-colors duration-300">
-          <span className="text-sm mb-2">Scroll Down</span>
+          <span className="text-sm mb-2">{translations.hero.scrollDown}</span>
           <i className="fa-solid fa-chevron-down"></i>
         </a>
       </motion.div>

@@ -3,6 +3,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { queryClient } from "./lib/queryClient";
 import { ThemeProvider } from "./context/ThemeContext";
+import { LanguageProvider } from "./i18n/LanguageContext";
 import SplashScreen from "./components/SplashScreen";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
@@ -29,9 +30,10 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider>
-      <QueryClientProvider client={queryClient}>
-        {loading ? (
+    <LanguageProvider>
+      <ThemeProvider>
+        <QueryClientProvider client={queryClient}>
+          {loading ? (
           <SplashScreen />
         ) : (
           <div className="bg-white dark:bg-dark-900 text-dark-800 dark:text-white transition-colors duration-300">
@@ -50,9 +52,10 @@ function App() {
             <BackToTop />
           </div>
         )}
-        <Toaster />
-      </QueryClientProvider>
-    </ThemeProvider>
+          <Toaster />
+        </QueryClientProvider>
+      </ThemeProvider>
+    </LanguageProvider>
   );
 }
 

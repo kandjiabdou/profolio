@@ -1,11 +1,12 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useLanguage } from "../i18n/LanguageContext";
 
-const projects = [
+const getProjects = (translations: any) => [
   {
     id: 1,
-    title: "SYAGES - Student Management Platform",
-    description: "A web platform for administrative and educational management of students and interns.",
+    title: translations.projects.items.syages.title,
+    description: translations.projects.items.syages.description,
     image: "SYAGES",
     skills: ["PHP", "JavaScript", "MySQL", "MVC"],
     demoLink: "#",
@@ -13,8 +14,8 @@ const projects = [
   },
   {
     id: 2,
-    title: "SNCF App Clone",
-    description: "A clone of the SNCF application featuring shortest path algorithms between two points.",
+    title: translations.projects.items.sncf.title,
+    description: translations.projects.items.sncf.description,
     image: "SNCF Clone",
     skills: ["Vue.js", "Vuetify", "Python", "Algorithms"],
     demoLink: "#",
@@ -22,8 +23,8 @@ const projects = [
   },
   {
     id: 3,
-    title: "Mobile Board Game",
-    description: "A checkers-like board game available on Google Play Store, developed for Android and iOS.",
+    title: translations.projects.items.boardGame.title,
+    description: translations.projects.items.boardGame.description,
     image: "Board Game",
     skills: ["Java", "React Native", "Node.js", "SQLite"],
     demoLink: "#",
@@ -31,8 +32,8 @@ const projects = [
   },
   {
     id: 4,
-    title: "Menance - AI Tic Tac Toe",
-    description: "AI implementation that learns and plays Tic Tac Toe, developed in September 2022.",
+    title: translations.projects.items.menance.title,
+    description: translations.projects.items.menance.description,
     image: "Menance",
     skills: ["AI", "Machine Learning", "Python", "Algorithms"],
     demoLink: "#",
@@ -40,8 +41,8 @@ const projects = [
   },
   {
     id: 5,
-    title: "Ago KMean - Data Science",
-    description: "An unsupervised learning algorithm used to solve clustering problems, developed in March 2021.",
+    title: translations.projects.items.kmeans.title,
+    description: translations.projects.items.kmeans.description,
     image: "KMeans",
     skills: ["Data Science", "Machine Learning", "Python", "Clustering"],
     demoLink: "#",
@@ -49,8 +50,8 @@ const projects = [
   },
   {
     id: 6,
-    title: "MMORPG Game",
-    description: "A real-time multiplayer game for two players, developed in Java using Eclipse.",
+    title: translations.projects.items.mmorpg.title,
+    description: translations.projects.items.mmorpg.description,
     image: "MMORPG",
     skills: ["Java", "Eclipse", "Multiplayer", "Real-time"],
     demoLink: "#",
@@ -59,6 +60,7 @@ const projects = [
 ];
 
 const ProjectsSection = () => {
+  const { translations } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
@@ -93,10 +95,10 @@ const ProjectsSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-dark-900 dark:text-white mb-4">Featured Projects</h2>
+          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-dark-900 dark:text-white mb-4">{translations.projects.title}</h2>
           <div className="w-20 h-1.5 bg-primary-500 rounded-full mx-auto"></div>
           <p className="mt-4 text-dark-700 dark:text-dark-100 max-w-2xl mx-auto">
-            Explore a selection of my latest projects, showcasing my skills and experience.
+            {translations.projects.subtitle}
           </p>
         </motion.div>
         
@@ -107,7 +109,7 @@ const ProjectsSection = () => {
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
         >
-          {projects.map((project) => (
+          {getProjects(translations).map((project) => (
             <motion.div 
               key={project.id}
               className="bg-white dark:bg-dark-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100 dark:border-dark-700 group"
@@ -123,10 +125,10 @@ const ProjectsSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                   <div className="p-4 w-full">
                     <div className="flex gap-2 justify-end">
-                      <a href={project.demoLink} className="w-9 h-9 bg-white/90 dark:bg-dark-800/90 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-500 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white transition-colors duration-300" title="View Demo">
+                      <a href={project.demoLink} className="w-9 h-9 bg-white/90 dark:bg-dark-800/90 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-500 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white transition-colors duration-300" title={translations.projects.liveDemo}>
                         <i className="fa-solid fa-eye text-sm"></i>
                       </a>
-                      <a href={project.codeLink} className="w-9 h-9 bg-white/90 dark:bg-dark-800/90 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-500 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white transition-colors duration-300" title="View Code">
+                      <a href={project.codeLink} className="w-9 h-9 bg-white/90 dark:bg-dark-800/90 rounded-full flex items-center justify-center text-primary-600 dark:text-primary-500 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white transition-colors duration-300" title={translations.projects.viewProject}>
                         <i className="fa-solid fa-code text-sm"></i>
                       </a>
                     </div>
@@ -148,7 +150,7 @@ const ProjectsSection = () => {
                   ))}
                 </div>
                 <a href={project.demoLink} className="inline-flex items-center text-primary-600 dark:text-primary-500 hover:text-primary-700 dark:hover:text-primary-400 font-medium transition-colors duration-300">
-                  Learn more
+                  {translations.projects.learnMore}
                   <i className="fa-solid fa-arrow-right ml-1 text-sm"></i>
                 </a>
               </div>
@@ -165,7 +167,7 @@ const ProjectsSection = () => {
         >
           <a href="https://github.com/kandjiabdou" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-dark-800 hover:bg-gray-100 dark:hover:bg-dark-700 text-dark-800 dark:text-white border border-gray-300 dark:border-dark-700 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
             <i className="fa-brands fa-github"></i>
-            View All Projects on GitHub
+            {translations.projects.viewAllProjects}
           </a>
         </motion.div>
       </div>
