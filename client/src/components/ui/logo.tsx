@@ -16,8 +16,8 @@ export const Logo: React.FC<LogoProps> = ({ className = "", size = "md" }) => {
   return (
     <Link href="#hero">
       <a className={`flex items-center gap-2 font-heading font-bold text-primary-600 dark:text-primary-500 ${className}`}>
-        <div className={`${sizeClasses[size]} rounded-md bg-primary-600 dark:bg-primary-500 text-white flex items-center justify-center`}>
-          AK
+        <div className={`${sizeClasses[size]} rounded-md text-white flex items-center justify-center`}>
+          <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
         </div>
         <span>Abdou Kandji</span>
       </a>

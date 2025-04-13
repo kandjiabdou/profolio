@@ -66,11 +66,11 @@ const AboutSection = () => {
               {/* Main Image Frame */}
               <div className="w-full max-w-md mx-auto aspect-square rounded-2xl overflow-hidden border-8 border-white dark:border-dark-700 shadow-lg relative z-10 bg-gradient-to-br from-primary-50 to-gray-100 dark:from-dark-700 dark:to-dark-800">
                 {/* Profile Image Placeholder */}
-                <div className="absolute inset-0 flex items-center justify-center bg-gray-200 dark:bg-dark-700">
-                  <div className="w-full h-full flex items-center justify-center text-9xl text-gray-400 dark:text-dark-600 font-heading font-bold">
-                    AK
-                  </div>
-                </div>
+                <img 
+                  src="/image/photo_profile.png" 
+                  alt="Abdou Kandji Profile" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               
               {/* Decorative Elements */}
@@ -95,7 +95,7 @@ const AboutSection = () => {
                 transition={{ duration: 0.5, delay: 0.7, type: "spring" }}
               >
                 <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary-500 flex flex-col items-center justify-center text-white">
-                  <span className="text-lg md:text-xl font-bold">3+</span>
+                  <span className="text-lg md:text-xl font-bold">5+</span>
                   <span className="text-xs md:text-sm">Years</span>
                 </div>
               </motion.div>

@@ -2,28 +2,51 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const programmingLanguages = [
-  { name: "Java", percentage: 90 },
-  { name: "JavaScript", percentage: 85 },
-  { name: "Python", percentage: 80 },
-  { name: "PHP", percentage: 75 },
-  { name: "C/C++", percentage: 70 }
+  { name: "Java", percentage: 90, icon: "devicon-java-plain colored" },
+  { name: "JavaScript", percentage: 85, icon: "devicon-javascript-plain colored" },
+  { name: "Python", percentage: 80, icon: "devicon-python-plain colored" },
+  { name: "PHP", percentage: 75, icon: "devicon-php-plain colored" },
+  { name: "C/C++", percentage: 70, icon: "devicon-cplusplus-plain colored" }
 ];
 
 const webTechnologies = [
-  "React", "Node.js", "Vue.js", "Angular", "HTML5", 
-  "CSS3", "Symfony", "Bootstrap", "REST API", "jQuery"
+  { name: "React", icon: "devicon-react-original colored" },
+  { name: "Node.js", icon: "devicon-nodejs-plain colored" },
+  { name: "Vue.js", icon: "devicon-vuejs-plain colored" },
+  { name: "Angular", icon: "devicon-angularjs-plain colored" },
+  { name: "HTML5", icon: "devicon-html5-plain colored" },
+  { name: "CSS3", icon: "devicon-css3-plain colored" },
+  { name: "Symfony", icon: "devicon-symfony-original colored" },
+  { name: "Bootstrap", icon: "devicon-bootstrap-plain colored" },
+  { name: "REST API", icon: "fa-solid fa-server" },
+  { name: "jQuery", icon: "devicon-jquery-plain colored" }
 ];
 
 const devOpsTools = [
-  "Git", "Docker", "Jenkins", "Linux", "CI/CD", 
-  "SonarQube", "Grafana", "Maven", "Postman", "VS Code"
+  { name: "Git", icon: "devicon-git-plain colored" },
+  { name: "Docker", icon: "devicon-docker-plain colored" },
+  { name: "Jenkins", icon: "devicon-jenkins-plain colored" },
+  { name: "Linux", icon: "devicon-linux-plain colored" },
+  { name: "CI/CD", icon: "fa-solid fa-infinity" },
+  { name: "SonarQube", icon: "fa-solid fa-code-branch" },
+  { name: "Grafana", icon: "fa-solid fa-chart-line" },
+  { name: "Maven", icon: "devicon-apache-plain colored" },
+  { name: "Postman", icon: "devicon-chrome-plain colored" },
+  { name: "VS Code", icon: "devicon-vscode-plain colored" }
 ];
 
-const databases = ["MySQL", "PostgreSQL", "SQLite", "NoSQL"];
+const databases = [
+  { name: "MySQL", icon: "devicon-mysql-plain colored" },
+  { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+  { name: "SQLite", icon: "devicon-sqlite-plain colored" },
+  { name: "NoSQL", icon: "devicon-mongodb-plain colored" }
+];
 
 const softSkills = [
-  "Agile/Scrum Methodology", "Project Management", 
-  "Problem Solving", "Team Collaboration"
+  { name: "Agile/Scrum Methodology", icon: "fa-solid fa-rotate" },
+  { name: "Project Management", icon: "fa-solid fa-tasks" },
+  { name: "Problem Solving", icon: "fa-solid fa-puzzle-piece" },
+  { name: "Team Collaboration", icon: "fa-solid fa-users" }
 ];
 
 const SkillsSection = () => {
@@ -101,7 +124,10 @@ const SkillsSection = () => {
               {programmingLanguages.map((lang) => (
                 <div className="skill-item" key={lang.name}>
                   <div className="flex justify-between items-center mb-1">
-                    <span className="font-medium text-dark-800 dark:text-dark-100">{lang.name}</span>
+                    <div className="flex items-center gap-2">
+                      <i className={`${lang.icon} text-xl`}></i>
+                      <span className="font-medium text-dark-800 dark:text-dark-100">{lang.name}</span>
+                    </div>
                     <span className="text-sm text-dark-700 dark:text-dark-200">{lang.percentage}%</span>
                   </div>
                   <div className="w-full h-2 bg-gray-200 dark:bg-dark-700 rounded-full overflow-hidden">
@@ -129,9 +155,9 @@ const SkillsSection = () => {
             </h3>
             <div className="grid grid-cols-2 gap-4">
               {webTechnologies.map((tech) => (
-                <div className="skill-chip flex items-center gap-2" key={tech}>
-                  <div className="w-3 h-3 rounded-full bg-secondary-500"></div>
-                  <span className="text-dark-800 dark:text-dark-100">{tech}</span>
+                <div className="skill-chip flex items-center gap-2" key={tech.name}>
+                  <i className={`${tech.icon} text-xl`}></i>
+                  <span className="text-dark-800 dark:text-dark-100">{tech.name}</span>
                 </div>
               ))}
             </div>
@@ -150,9 +176,9 @@ const SkillsSection = () => {
             </h3>
             <div className="grid grid-cols-2 gap-4">
               {devOpsTools.map((tool) => (
-                <div className="skill-chip flex items-center gap-2" key={tool}>
-                  <div className="w-3 h-3 rounded-full bg-primary-500"></div>
-                  <span className="text-dark-800 dark:text-dark-100">{tool}</span>
+                <div className="skill-chip flex items-center gap-2" key={tool.name}>
+                  <i className={`${tool.icon} text-xl`}></i>
+                  <span className="text-dark-800 dark:text-dark-100">{tool.name}</span>
                 </div>
               ))}
             </div>
@@ -174,9 +200,9 @@ const SkillsSection = () => {
               <h4 className="text-sm font-semibold uppercase tracking-wider text-dark-700 dark:text-dark-200 mb-3">Databases</h4>
               <div className="grid grid-cols-2 gap-2">
                 {databases.map((db) => (
-                  <div className="skill-chip flex items-center gap-2" key={db}>
-                    <div className="w-3 h-3 rounded-full bg-secondary-500"></div>
-                    <span className="text-dark-800 dark:text-dark-100">{db}</span>
+                  <div className="skill-chip flex items-center gap-2" key={db.name}>
+                    <i className={`${db.icon} text-xl`}></i>
+                    <span className="text-dark-800 dark:text-dark-100">{db.name}</span>
                   </div>
                 ))}
               </div>
@@ -187,9 +213,9 @@ const SkillsSection = () => {
               <h4 className="text-sm font-semibold uppercase tracking-wider text-dark-700 dark:text-dark-200 mb-3">Soft Skills</h4>
               <div className="grid grid-cols-1 gap-2">
                 {softSkills.map((skill) => (
-                  <div className="skill-chip flex items-center gap-2" key={skill}>
-                    <div className="w-3 h-3 rounded-full bg-primary-500"></div>
-                    <span className="text-dark-800 dark:text-dark-100">{skill}</span>
+                  <div className="skill-chip flex items-center gap-2" key={skill.name}>
+                    <i className={`${skill.icon} text-xl`}></i>
+                    <span className="text-dark-800 dark:text-dark-100">{skill.name}</span>
                   </div>
                 ))}
               </div>
