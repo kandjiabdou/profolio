@@ -16,6 +16,7 @@ import BlogSection from "./components/BlogSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
+import GameSection from "./components/GameSection";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -46,6 +47,7 @@ function App() {
               <ProjectsSection />
               <EducationSection />
               <BlogSection />
+              <GameSection />
               <ContactSection />
             </main>
             <Footer />

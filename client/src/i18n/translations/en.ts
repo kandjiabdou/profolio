@@ -1,4 +1,16 @@
 export const en = {
+  game: {
+    title: "Let's Play!",
+    description: "Jump through my skills and projects in this fun mini-game. Can you unlock them all?",
+    pressToStart: "Press SPACE or tap to start",
+    instructions: "Jump over the bugs to unlock skills and projects!",
+    gameOver: "Game Over!",
+    finalScore: "Final Score",
+    unlockedSkills: "Skills Unlocked",
+    unlockedProjects: "Projects Unlocked",
+    playAgain: "Play Again",
+    contactMe: "Contact Me"
+  },
   footer: {
     tagline: "Full Stack Developer passionate about creating elegant solutions to complex problems.",
     navigation: {

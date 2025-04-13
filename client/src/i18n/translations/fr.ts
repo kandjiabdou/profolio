@@ -1,4 +1,16 @@
 export const fr = {
+  game: {
+    title: "On joue ?",
+    description: "Sautez à travers mes compétences et projets dans ce mini-jeu amusant. Pourrez-vous tout débloquer ?",
+    pressToStart: "Appuyez sur ESPACE ou tapez pour commencer",
+    instructions: "Sautez par-dessus les bugs pour débloquer des compétences et des projets !",
+    gameOver: "Partie terminée !",
+    finalScore: "Score final",
+    unlockedSkills: "Compétences débloquées",
+    unlockedProjects: "Projets débloqués",
+    playAgain: "Rejouer",
+    contactMe: "Me contacter"
+  },
   footer: {
     tagline: "Développeur Full Stack passionné par la création de solutions élégantes à des problèmes complexes.",
     navigation: {
